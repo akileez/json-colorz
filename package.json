@@ -1,6 +1,6 @@
 {
   "name": "json-colorz",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "An awesome module being created",
   "main": "index.js",
   "scripts": {},
@@ -33,7 +33,7 @@
     "format"
   ],
   "dependencies": {
-    "colorz": "^0.1.3"
+    "colorz": "^0.1.9"
   },
   "devDependencies": {},
   "files": [
