@@ -1,15 +1,16 @@
 # json-colorz
 [![NPM version][npm-image]][npm-url]
-[![js-standard-style][standard-image]][standard-url]
+[![schoolmarm-standard-style][marm-image]][marm-url]
 [![experimental][stability-image]][stability-url]
 [![Downloads][downloads-image]][downloads-url]
 
-This package allows you to display your json object on the console in a pretty format with colors.
-[WIP]
+> This package allows you to display your json object on the console in a pretty format with colors.
 
 ## Why?
-[Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk) and I want to use [colorz](https://www.npmjs.com/package/colorz). 
-jsome has a cli and can be used in the browser, json-colorz respectfully, does not and cannot. json-colorz was built for node development use only. 
+[Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk), has a command line interface and can be used in the browser. Json-colorz uses [colorz](https://www.npmjs.com/package/colorz), does not have a cli and is not configured to run in the browser. The motivation here was to stress test colorz and ensure that all my requirements were met. Jsome (and now, json-colorz) proved to be the module which would push `colorz` to its limits. 
+
+I have been on a crusade to "eat my own cooking", so base tools like chalk, [moment](), [lodash](), [async](), etc are being phased out for home grown solutions. This process has enhanced my learning experience
+
 
 So I advocate to you, the user, USE [JSOME](https://github.com/Javascipt/Jsome). If you like this version, then star [JSOME](https://github.com/Javascipt/Jsome). All credit for this code goes to Jsome author, [Khalid REHIOUI](https://www.npmjs.com/~javascript). 
 
@@ -65,6 +66,8 @@ jclrz(obj)
 
 The following is a duplication of jsome's readme file with appropriate references changed as necessary. code functions exactly the same.
 
+## API
+
 The `jclrz` function returns the object passed as argument so that when debugging, you can print the value of an object without having to change a lot on your code
 
 ```javascript
@@ -83,6 +86,8 @@ The `jclrz` function returns the object passed as argument so that when debuggin
     }
     
 ```
+
+#### `jclrz.level`
 
 You can add some points to show levels of elements... very helpful when you are dealing with complex json objects
 
@@ -109,6 +114,8 @@ The object `jclrz.level` has as default value the following json :
 You can change the level char, its color ( [see colorz package](http://npmjs.org/package/colorz) ) and the number of spaces for each level.
 
 You can also display your json starting from a specific level to avoid displaying your json starting from the extreme left. You can do that by changing the value `jclrz.level.start`.
+
+#### `jclrz.colors`
 
 You can configure the colors of the displayed json by changing the values of the `jclrz.colors` object which has as default these values.
 
@@ -139,18 +146,7 @@ You can not only use the color value as string but also you can use an array to 
 ```
 ![jclrz](http://i.imgur.com/AKoAPJM.png)
 
-
-When you have a json as a string, instead of passing by `JSON.parse` function, you can just call the parse function of jclrz
-
-```javascript
-  jclrz(JSON.parse('[1,2,3]'))
-```
-
-becomes:
-
-```javascript
-  jclrz.parse('[1,2,3]')
-```
+#### `jclrz.params`
 
 If you need to disable the colors:
 
@@ -177,6 +173,20 @@ The default value of `params` is:
   }
 ```
 
+#### `jclrz.parse`
+
+When you have a json as a string, instead of passing by `JSON.parse` function, you can just call the parse function of jclrz
+
+```javascript
+  jclrz(JSON.parse('[1,2,3]'))
+```
+
+becomes:
+
+```javascript
+  jclrz.parse('[1,2,3]')
+```
+
 ## See Also
 - [jsome](https://www.npmjs.com/package/jsome): the awesome package json-colorz shamelessly duplicated
 
@@ -185,9 +195,9 @@ The default value of `params` is:
 
 [npm-image]: https://img.shields.io/npm/v/json-colorz.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/json-colorz
-[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
-[standard-url]: https://github.com/feross/standard
-[stability-image]: https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square
+[marm-image]: https://img.shields.io/badge/code%20style-marm-brightgreen.svg?style=flat-square
+[marm-url]: https://github.com/akileez/eslint-config-marm
+[stability-image]: https://img.shields.io/badge/stability-experimental-darkorange.svg?style=flat-square
 [stability-url]: https://github.com/akileez/json-colorz
 [downloads-image]: http://img.shields.io/npm/dm/json-colorz.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/json-colorz
