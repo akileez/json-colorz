@@ -1,7 +1,7 @@
 {
   "name": "json-colorz",
   "version": "0.1.4",
-  "description": "display a json/object in the console with colorz",
+  "description": "display a json or javascript object in the console with colorz",
   "main": "index.js",
   "scripts": {},
   "engines": {
