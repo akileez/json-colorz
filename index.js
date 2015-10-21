@@ -45,7 +45,7 @@ var options = {
 var engine = require('./lib/engine').setOptions(options)
 
 function colorize (engine) {
-
+  // main function: jclrz
   function jclrz (json, cb) {
     if (!jclrz.params.async) {
       process.stdout.write(engine.gen(json, options.level.start) + '\n')
@@ -58,10 +58,12 @@ function colorize (engine) {
     return json
   }
 
+  // parse
   jclrz.parse = function (jsonString, cb) {
     return jclrz(JSON.parse(jsonString), cb)
   }
 
+  // options
   jclrz.colors = colors
   jclrz.level = level
   jclrz.params = params
