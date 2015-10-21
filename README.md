@@ -61,7 +61,7 @@ jclrz(obj)
 
 ![jclrz](http://i.imgur.com/0A3rHRc.png)
 
-The following is a duplication of jsome's readme file with appropriate references changed as necessary. code functions exactly the same.
+The following is a duplication of [jsome's readme](https://github.com/Javascipt/Jsome/blob/master/README.md). References changed where appropriate.
 
 ## API
 
