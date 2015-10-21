@@ -4,7 +4,7 @@
 [![experimental][stability-image]][stability-url]
 [![Downloads][downloads-image]][downloads-url]
 
-> This package allows you to display your json object on the console in a pretty format with colors.
+> display a json/object in the console with colorz.
 
 ## Why?
 [Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk), has a command line interface and can be used in the browser. Json-colorz uses [colorz](https://www.npmjs.com/package/colorz), does not have a cli and is not configured to run in the browser. The motivation here was to stress test colorz and ensure that all my requirements were met. Jsome (and now, json-colorz) proved to be the module which would push `colorz` to its limits. 
