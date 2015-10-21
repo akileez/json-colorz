@@ -4,15 +4,12 @@
 [![experimental][stability-image]][stability-url]
 [![Downloads][downloads-image]][downloads-url]
 
-> display a json/object in the console with colorz.
+> display a json or javascript object in the console with colorz.
 
 ## Why?
-[Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk), has a command line interface and can be used in the browser. Json-colorz uses [colorz](https://www.npmjs.com/package/colorz), does not have a cli and is not configured to run in the browser. The motivation here was to stress test colorz and ensure that all my requirements were met. Jsome (and now, json-colorz) proved to be the module which would push `colorz` to its limits. 
+[Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk), has a command line interface and can be used in the browser. Json-colorz uses [colorz](https://www.npmjs.com/package/colorz), does not have a cli and is not configured to run in the browser. The motivation here was to stress test `colorz` and  jsome (json-colorz) proved to be the module which would push `colorz` to its limits. 
 
-I have been on a crusade to "eat my own cooking", so base tools like chalk, [moment](), [lodash](), [async](), etc are being phased out for home grown solutions. This process has enhanced my learning experience
-
-
-So I advocate to you, the user, USE [JSOME](https://github.com/Javascipt/Jsome). If you like this version, then star [JSOME](https://github.com/Javascipt/Jsome). All credit for this code goes to Jsome author, [Khalid REHIOUI](https://www.npmjs.com/~javascript). 
+So, I advocate to you, the user, USE [JSOME](https://github.com/Javascipt/Jsome). If you like this version, :+1:, but then go star [JSOME](https://github.com/Javascipt/Jsome). All credit for this code goes to Jsome author, [Khalid REHIOUI](https://www.npmjs.com/~javascript). What changes I have made are particular to my use case senarios. And I don't care much about stars and ratings. 
 
 ## Installation
 ```bash
