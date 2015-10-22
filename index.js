@@ -3,185 +3,72 @@
  *
  * Copyright (c) 2015 Keith Williams.
  * Licensed under the ISC license.
+ *
+ * Original Code:
+ * jsome <https://github.com/Javascipt/Jsome>
+ * Copyright (c) 2015 Khalid REHIOUI <Array.prototype@gmail.com> (http://github.com/javascipt)
+ * Licensed under he MIT License (MIT)
  */
 
-var clrz = require('colorz')
-
-var data = {
-  global: {
-    colored : true,
-    async   : false
-  },
-  colors: {
-    num     : "cyan",
-    str     : "magenta",
-    bool    : "red",
-    undef   : "grey",
-    null    : "grey",
-    attr    : "green",
-    quot    : "magenta",
-    punc    : "yellow",
-    brack   : "yellow"
-  },
-  level: {
-    show    : false,
-    char    : ".",
-    color   : "yellow",
-    spaces  : 4
-  }
+var colors = {
+  num   : 'cyan',
+  str   : 'magenta',
+  bool  : 'red',
+  regex : 'blue',
+  undef : 'grey',
+  null  : 'grey',
+  attr  : 'green',
+  quot  : 'yellow',
+  punc  : 'yellow',
+  brack : 'yellow'
 }
 
-var colors = data.colors
-var level = data.level
-var global = data.global
-
-function generateColors (value, type) {
-  if (!global.colored) return value
-  if (type) return c(value, colors[type])
-  if ((''+value) == 'null') return c('null', colors.null)
-  if ((''+value) == 'undefined') return c('undefined', colors.undef)
-
-  switch (kindOf(value)) {
-    case 'number' : return c(value.toString(), colors.num)
-    case 'string' : return [c('"', colors.quot), c(value, colors.str), c('"', colors.quot)].join('')
-    case 'boolean' : return c(value.toString(), colors.bool)
-    case 'function' : return c('null', colors.null)
-    case 'array' :
-      var log = c('[', colors.brack)
-      var i = -1
-      var len = value.length
-      while (++i < len) {
-        log += generateColors(value[i])
-        if (i < value.length - 1) log += c(', ', colors.punc)
-      }
-      log += c(']', colors.brack)
-      return log
-  }
+var level = {
+  show   : false,
+  char   : '.',
+  color  : 'red',
+  spaces : 2,
+  start  : 0
 }
 
-function getTabs (lvl) {
-  var tabs = ''
-  var spaces = ' '
-  var i = -1
-  while (spaces.length < level.spaces) {
-    spaces += ' '
-  }
-  while (++i < lvl) {
-    tabs += ((level.show) ? c(level.char, level.color) : '') + spaces
-  }
-  return tabs
+var params = {
+  colored: true,
+  async: false
 }
 
-function hasChilds (array) {
-  var i = -1
-  var len = array.length
-  while (++i < len) {
-    if (kindOf(array[i]) === 'array' || kindOf(array[i]) === 'object') return true
-  }
-  return false
+var options = {
+  colors : colors,
+  level  : level,
+  params : params
 }
 
-function clearObject (json) {
-  var len = 0
-  for (var key in json) {
-    if (json.hasOwnProperty(key) && kindOf(json[key] !== 'function')) len ++
-    else delete json[key]
-  }
-  return len
-}
+var engine = require('./lib/engine').setOptions(options)
 
-function clearArray (json) {
-  for (var key in json) {
-    if (kindOf(json[key]) === 'function') json[key] = null
-  }
-  return json.length
-}
-
-function isEmpty (elem) {
-  for (key in elem) {
-    return false
-  }
-  return true
-}
-
-function kindOf (value) {
-  return typeof value === 'object'
-    ? Object.prototype.toString.call(value).replace(/^\[object |\]$/g,'').toLowerCase()
-    : typeof value
-}
-
-function c (str, prop) {
-  return clrz[prop](str)
-}
-
-function jsonColorize (json, lvl, inObj) {
-  var level = lvl ? lvl : 0
-  var result = ''
-  if (kindOf(json) === 'object') {
-    var len = clearObject(json)
-    if (isEmpty(json)) return getTabs(level) + generateColors('{}', 'brack')
-
-    result += getTabs(inObj ? 0 : level) + generateColors('{\n', 'brack')
-
-    for (key in json) {
-      len --
-      if (kindOf(json[key]) === 'object' || kindOf(json[key]) === 'array') {
-        result += getTabs(level +1)
-          + generateColors(key, 'attr')
-          + generateColors(': ', 'punc')
-          + jsonColorize(json[key], level + 1, true)
-          + generateColors((len ? ', ' : '') + '\n', 'punc')
-      } else {
-        result += getTabs(level + 1)
-          + generateColors(key, 'attr')
-          + generateColors(': ', 'punc')
-          + generateColors(json[key])
-          + generateColors((len ? ', ' : '') + '\n', 'punc')
-      }
+function colorize (engine) {
+  // main function: jclrz
+  function jclrz (json, cb) {
+    if (!jclrz.params.async) {
+      process.stdout.write(engine.gen(json, options.level.start) + '\n')
+    } else {
+      process.nextTick(function () {
+        process.stdout.write(engine.gen(json, options.level.start) + '\n')
+        cb && cb()
+      })
     }
-
-    result += getTabs(level) + generateColors('}', 'brack')
-
-  } else if (kindOf(json) === 'array' && hasChilds(json)) {
-    if (isEmpty(json)) return getTabs(level) + generateColors('[]', 'brack')
-
-    result += getTabs(inObj ? 0 : level) + generateColors('[\n', 'brack')
-
-    var len = clearArray(json)
-    for (key in json) {
-      len --
-      if (kindOf(json[key]) === 'object' || kindOf(json[key]) === 'array') {
-        result += jsonColorize(json[key], level + 1) + generateColors((len ? ', ' : '') + '\n', 'punc')
-      } else {
-        result += getTabs(level + 1)
-          + generateColors(json[key])
-          + generateColors((len ? ', ' : '') + '\n', 'punc')
-      }
-    }
-
-    result += getTabs(level) + generateColors(']', 'brack')
-
-  } else {
-    result += getTabs(inObj ? 0 : level) + generateColors(json)
+    return json
   }
 
-  return result
+  // parse
+  jclrz.parse = function (jsonString, cb) {
+    return jclrz(JSON.parse(jsonString), cb)
+  }
+
+  // options
+  jclrz.colors = colors
+  jclrz.level = level
+  jclrz.params = params
+
+  return jclrz
 }
 
-function service (json, func) {
-  // if (global.async) {
-  //   jsonColorize.than(json, function (data) {
-  //     console.log
-  //   })
-  // }
-  console.log(jsonColorize(json))
-}
-
-service.parse = function (json) {
-  this(JSON.parse(json))
-}
-service.colors = colors
-service.level = level
-service.global = global
-
-module.exports = service
+module.exports = colorize(engine)
