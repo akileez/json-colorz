@@ -1,6 +1,6 @@
 {
   "name": "json-colorz",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "display a json or javascript object in the console with colorz",
   "main": "index.js",
   "scripts": {},
@@ -30,7 +30,8 @@
     "console",
     "terminal",
     "iTerm",
-    "format"
+    "format",
+    "jsome"
   ],
   "dependencies": {
     "colorz": "^0.1.9"
