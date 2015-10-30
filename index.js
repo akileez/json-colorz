@@ -20,7 +20,13 @@ var colors = {
   attr  : 'green',
   quot  : 'yellow',
   punc  : 'yellow',
-  brack : 'yellow'
+  brack : 'yellow',
+  func  : 'grey'
+}
+
+var display = {
+  func: false,
+  date: false
 }
 
 var level = {
@@ -38,6 +44,7 @@ var params = {
 
 var options = {
   colors : colors,
+  display: display,
   level  : level,
   params : params
 }
@@ -65,6 +72,7 @@ function colorize (engine) {
 
   // options
   jclrz.colors = colors
+  jclrz.display = display
   jclrz.level = level
   jclrz.params = params
 
