@@ -7,9 +7,9 @@
 > display a json or javascript object in the console with colorz.
 
 ## Why?
-[Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk), has a command line interface and can be used in the browser. Json-colorz uses [colorz](https://www.npmjs.com/package/colorz), does not have a cli and is not configured to run in the browser. The motivation here was to stress test `colorz` and  jsome (json-colorz) proved to be the module which would push `colorz` to its limits. 
+[Jsome](https://www.npmjs.com/package/jsome) uses [chalk](https://www.npmjs.com/package/chalk), has a command line interface and can be used in the browser. Json-colorz uses [colorz](https://www.npmjs.com/package/colorz), does not have a cli, is not configured to run in the browser, but can display functions and date calls within javascript objects. This is useful to me for debugging purposes. The main motivation here was to stress test `colorz`. Jsome/json-colorz proved to be the module which would push the limits. 
 
-So, I advocate to you, the user, USE [JSOME](https://github.com/Javascipt/Jsome). If you like this version, :+1:, but then go star [JSOME](https://github.com/Javascipt/Jsome). All credit for this code goes to Jsome author, [Khalid REHIOUI](https://www.npmjs.com/~javascript). What changes I have made are particular to my use case senarios. And I don't care much about stars and ratings. 
+So, I advocate to you, the user, USE [JSOME](https://github.com/Javascipt/Jsome). If you like this version,  :+1:, great, fantastic. But then go star [JSOME](https://github.com/Javascipt/Jsome). All credit for this code goes to Jsome author, [Khalid REHIOUI](https://www.npmjs.com/~javascript). What changes I have made are particular to my use case senarios. And I don't care much about stars and ratings. 
 
 ## Installation
 ```bash
@@ -61,11 +61,11 @@ jclrz(obj)
 
 ![jclrz](http://i.imgur.com/0A3rHRc.png)
 
-The following is a duplication of [jsome's readme](https://github.com/Javascipt/Jsome/blob/master/README.md). References changed where appropriate.
+The following is a duplication of [jsome's readme](https://github.com/Javascipt/Jsome/blob/master/README.md). References changed and additions made where appropriate.
 
 ## API
 
-The `jclrz` function returns the object passed as argument so that when debugging, you can print the value of an object without having to change a lot on your code
+The `jclrz` function returns the object passed as an argument. When debugging, you can print the value of an object without having to change a lot on your code
 
 ```javascript
 
@@ -127,7 +127,9 @@ You can configure the colors of the displayed json by changing the values of the
       'attr'  : 'green',   // objects attributes -> { attr : value }
       'quot'  : 'yellow',  // strings quotes -> "..."
       'punc'  : 'yellow',  // commas seperating arrays and objects values -> [ , , , ]
-      'brack' : 'yellow'   // for both {} and []
+      'brack' : 'yellow',  // for both {} and []
+      'func'  : 'grey'     // stands for functions
+      // dates are not defined and will be displayed in the default term color.
   }
 ```
 
@@ -140,8 +142,29 @@ You can not only use the color value as string but also you can use an array to 
   jclrz.colors.quot  = ['yellow', 'bold']
   jclrz.colors.punc  = ['yellow', 'bold']
   jclrz.colors.brack = ['yellow', 'bold']
+  jclrz.colors.date  = ['red'] // you can defined a color for dates this way.
 ```
-![jclrz](http://i.imgur.com/AKoAPJM.png)
+![jclrz_no_func_date](http://i.imgur.com/e5l1Yox.png)
+
+#### `jclrz.display`
+
+You now have the option of displaying functions or dates within a javascript object. Functions are indented by the level at which they occur. Functions are also filtered out of arrays by default. This may be changed in the future, but only if there is demand for it.
+
+```javascript
+  jclrz.display.func = true
+  jclrz.display.date = true
+```
+
+![jclrz_func_date](http://imgur.com/K4mrEME.png)
+
+The default value of `display` is:
+
+```javascript
+  jclrz.display = {
+    func: false,
+    date: false
+  }
+```
 
 #### `jclrz.params`
 
