@@ -148,7 +148,8 @@ You can not only use the color value as string but also you can use an array to 
 
 #### `jclrz.display`
 
-You now have the option of displaying functions or dates within a javascript object. Functions are indented by the level at which they occur. Functions are also filtered out of arrays by default. This may be changed in the future, but only if there is demand for it.
+You now have the option of displaying functions or dates within a javascript object. Functions are indented by the level at which they occur. Functions are displayed within arrays as well. This changes the previous behavior.
+
 
 ```javascript
   jclrz.display.func = true
