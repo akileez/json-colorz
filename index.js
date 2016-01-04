@@ -1,7 +1,7 @@
 /*!
  * json-colorz <https://github.com/akileez/json-colorz>
  *
- * Copyright (c) 2015 Keith Williams.
+ * Copyright (c) 2015-2016 Keith Williams.
  * Licensed under the ISC license.
  *
  * Original Code:
