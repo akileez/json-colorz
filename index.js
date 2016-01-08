@@ -26,7 +26,8 @@ var colors = {
 
 var display = {
   func: false,
-  date: false
+  date: false,
+  xarr: false
 }
 
 var level = {
