@@ -21,13 +21,15 @@ var colors = {
   quot  : 'yellow',
   punc  : 'yellow',
   brack : 'yellow',
-  func  : 'grey'
+  func  : 'grey',
+  circ  : 'grey'
 }
 
 var display = {
   func: false,
   date: false,
-  xarr: true
+  xarr: true,
+  prot: true
 }
 
 var level = {
