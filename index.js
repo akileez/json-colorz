@@ -1,14 +1,14 @@
 /*!
- * json-colorz <https://github.com/akileez/json-colorz>
- *
- * Copyright (c) 2015-2016 Keith Williams.
- * Licensed under the ISC license.
- *
- * Original Code:
- * jsome <https://github.com/Javascipt/Jsome>
- * Copyright (c) 2015 Khalid REHIOUI <Array.prototype@gmail.com> (http://github.com/javascipt)
- * Licensed under he MIT License (MIT)
- */
+  json-colorz <https://github.com/akileez/json-colorz>
+
+  Copyright (c) 2015-2016 Keith Williams.
+  Licensed under the ISC license.
+
+  Original Code:
+  jsome <https://github.com/Javascipt/Jsome>
+  Copyright (c) 2015 Khalid REHIOUI <Array.prototype@gmail.com> (http://github.com/javascipt)
+  Licensed under the MIT License (MIT)
+*/
 
 var colors = {
   num   : 'cyan',
