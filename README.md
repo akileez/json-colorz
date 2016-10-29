@@ -149,6 +149,17 @@ You can not only use the color value as string but also you can use an array to 
 
 #### `jclrz.display`
 
+The default value of `display` is:
+
+```javascript
+  jclrz.display = {
+    func: false,
+    date: false,
+    xarr: true,
+    prot: true
+  }
+```
+
 You now have the option of displaying functions or dates within a javascript object (plain old javascript objects and arrays). Functions are indented by the level at which they occur. This changes the previous behavior compared to JSOME.
 The picture below does not show functions nor dates expanded within an array. Also note, formatting or alignment of functions displayed within an array has not been perfected yet.
 
@@ -161,15 +172,6 @@ The picture below does not show functions nor dates expanded within an array. Al
 
 ![jclrz_func_date](http://imgur.com/K4mrEME.png)
 
-The default value of `display` is:
-
-```javascript
-  jclrz.display = {
-    func: false,
-    date: false,
-    xarr: true
-  }
-```
 
 #### `jclrz.params`
 
