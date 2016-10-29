@@ -118,17 +118,18 @@ You can configure the colors of the displayed json by changing the values of the
 
 ```javascript
   jclrz.colors = {
-      'num'   : 'cyan',    // stands for numbers
-      'str'   : 'magenta', // stands for strings
-      'bool'  : 'red',     // stands for booleans
-      'regex' : 'blue',    // stands for regular expressions
-      'undef' : 'grey',    // stands for undefined
-      'null'  : 'grey',    // stands for null
+      'num'   : 'cyan',    // numbers
+      'str'   : 'magenta', // strings
+      'bool'  : 'red',     // booleans
+      'regex' : 'blue',    // regular expressions
+      'undef' : 'grey',    // undefined
+      'null'  : 'grey',    // null
       'attr'  : 'green',   // objects attributes -> { attr : value }
       'quot'  : 'yellow',  // strings quotes -> "..."
       'punc'  : 'yellow',  // commas seperating arrays and objects values -> [ , , , ]
       'brack' : 'yellow',  // for both {} and []
-      'func'  : 'grey'     // stands for functions
+      'func'  : 'grey'     // functions
+      'circ'  : 'grey'     // circular references
       // dates are not defined and will be displayed in the default term color.
   }
 ```
